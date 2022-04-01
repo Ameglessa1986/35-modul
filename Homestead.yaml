@@ -1,0 +1,39 @@
+---
+ip: '192.168.56.42' 
+memory: 2048
+cpus: 2
+provider: virtualbox
+name: 'PHP Backend'
+
+keys:
+  - ~/.amg/id_rsa
+
+folders:
+  - map: ~/DEV/PHP/SF_PHP/Part7/Mod35/code
+    to: /home/vagrant/code
+
+sites:
+  - map: application.local
+    to: /home/vagrant/code/public
+
+databases:
+  - amega-php
+
+features:
+  - mysql: true
+  - mariadb: false
+  - postgresql: false
+  - ohmyzsh: false
+  - webdriver: false
+
+services:
+  - enabled:
+      - 'mysql'
+
+ports:
+  - send: 80
+    to: 80
+  - send: 2222
+    to: 2242
+  - send: 443
+    to: 4430
